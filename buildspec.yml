@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Install phase started"
+      - docker --version
+      - docker compose version
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase"
+
+  build:
+    commands:
+      - echo "Starting Docker Compose..."
+      - docker compose up -d
+
+  post_build:
+    commands:
+      - echo "Containers running"
+      - docker ps
+
+artifacts:
+  files:
+    - '**/*'
