@@ -3,24 +3,24 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Install phase started"
-      - docker --version
-      - docker compose version
+      - echo "Installing dependencies..."
 
   pre_build:
     commands:
-      - echo "Pre-build phase"
+      - echo "Pre-build started..."
+      - ls -la
 
   build:
     commands:
-      - echo "Starting Docker Compose..."
-      - docker compose up -d
+      - echo "Build started..."
+      - docker-compose config
+      - echo "Build completed."
 
   post_build:
     commands:
-      - echo "Containers running"
-      - docker ps
+      - echo "Preparing artifacts..."
 
 artifacts:
   files:
     - '**/*'
+  discard-paths: no
